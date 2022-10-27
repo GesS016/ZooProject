@@ -1,3 +1,2 @@
-﻿using NewYorkZoo;
+﻿using Zoo;
 
-Hippo abc = new Hippo("fhtgfg", 2.5);
