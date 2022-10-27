@@ -15,6 +15,7 @@ namespace Zoo
         public double UnitsToSquare { get; set; }
         public double Age { get;set; }
         public string[] Eat { get; set; }
+        public string[] Toys { get; set; }
         protected string _sound;
         public Animal(string name, string habitat, double unitsToSquare, double age, double weight, double maxWeight)
         {
@@ -47,6 +48,18 @@ namespace Zoo
         public void MakeSound()
         {
             Console.WriteLine($"{Name}:{_sound}"); 
+        }
+
+        public void PLay(string toy)
+        {
+            if(Toys.Contains(toy))
+            {
+                Console.WriteLine($"{Name} plays with {toy}");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} don't like {toy}");
+            }
         }
     }
 }
