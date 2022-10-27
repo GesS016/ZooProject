@@ -8,6 +8,7 @@ namespace Zoo
 {
     public class Tiger:Animal
     {
-
+        public Tiger(string name, string habitat, double unitsToSquare, double age, double weight, double maxWeight) : base(name, habitat, age, unitsToSquare, maxWeight, weight)
+            { }
     }
 }
