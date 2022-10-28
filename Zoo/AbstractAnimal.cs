@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Zoo
 {
-    public abstract class Animal
+    public abstract class AbstractAnimal
     {
         public string Name { get; set; }
         public string Habitat { get;  protected set; }
@@ -17,7 +14,7 @@ namespace Zoo
         public string[] Eat { get; set; }
         public string[] Toys { get; set; }
         protected string _sound;
-        public Animal(string name, string habitat, double unitsToSquare, double age, double weight, double maxWeight)
+        public AbstractAnimal(string name, string habitat, double unitsToSquare, double age, double weight, double maxWeight)
         {
             Name = name;
             Habitat = habitat;
@@ -50,16 +47,6 @@ namespace Zoo
             Console.WriteLine($"{Name}:{_sound}"); 
         }
 
-        public void PLay(string toy)
-        {
-            if(Toys.Contains(toy))
-            {
-                Console.WriteLine($"{Name} plays with {toy}");
-            }
-            else
-            {
-                Console.WriteLine($"{Name} don't like {toy}");
-            }
-        }
+        public abstract void Play();
     }
 }
