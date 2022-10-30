@@ -32,47 +32,50 @@ namespace Zoo
             foodTypeHerbivoreList.Add("berries");
         }
 
-        public void Feed(string eat, double foodWeight)
+        public string Feed(string eat, double foodWeight)
         {
+            string result="";
             if(isPredator==true)
             {
                 if(foodTypePredatorList.Contains(eat))
                 {
-                    Console.WriteLine($"{Name} has {foodWeight} kg of {eat}");
+                    result="{Name} has {foodWeight} kg of {eat}";
                 }
                 else
                 {
-                    Console.WriteLine($"{Name} doesn't eat {eat}");
+                    result="{Name} doesn't eat {eat}";
                 }
             }
             else if(isPredator==false)
             {
                 if(foodTypeHerbivoreList.Contains(eat))
                 {
-                    Console.WriteLine($"{Name} has {foodWeight} kg of {eat}");
+                    result="{Name} has {foodWeight} kg of {eat}";
                 }
                 else
                 {
-                    Console.WriteLine($"{Name} doesn't eat {eat}");
+                    result="{Name} doesn't eat {eat}";
                 }
             }
             if(Weight+foodWeight<MaxWeight)
             {
                 Weight=+foodWeight;
-                Console.WriteLine($"{Name} is {Weight} kg now");
+                result="{result}.{Name} is {Weight} kg now";
             }
             else if(Weight + foodWeight>=MaxWeight)
             {
                 Weight=MaxWeight;
-                Console.WriteLine($"{Name} is {MaxWeight} kg now");
+                result = "{result}.{Name} is {MaxWeight} kg now";
             }
+            return result;
         }
 
-        public void MakeSound()
+        public string MakeSound()
         {
-            Console.WriteLine($"{Name}:{_sound}"); 
+            string result = "{Name}:{_sound}";
+            return result;
         }
 
-        public abstract void Play();
+        public abstract string Play();
     }
 }

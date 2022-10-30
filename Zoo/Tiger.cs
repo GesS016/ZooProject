@@ -14,9 +14,10 @@ namespace Zoo
             _sound = " RRR";
             }
         
-        public override void Play()
+        public override string Play()
         {
-            Console.WriteLine($"{Name} plays");
+            string result = "{Name} plays";
+            return result;
         }
     }
 }
