@@ -16,7 +16,7 @@ namespace Zoo
         
         public override string Play()
         {
-            string result = "{Name} plays";
+            string result = $"{Name} plays";
             return result;
         }
     }

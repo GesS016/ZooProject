@@ -39,40 +39,40 @@ namespace Zoo
             {
                 if(foodTypePredatorList.Contains(eat))
                 {
-                    result="{Name} has {foodWeight} kg of {eat}";
+                    result=$"{Name} has {foodWeight} kg of {eat}";
                 }
                 else
                 {
-                    result="{Name} doesn't eat {eat}";
+                    result=$"{Name} doesn't eat {eat}";
                 }
             }
             else if(isPredator==false)
             {
                 if(foodTypeHerbivoreList.Contains(eat))
                 {
-                    result="{Name} has {foodWeight} kg of {eat}";
+                    result=$"{Name} has {foodWeight} kg of {eat}";
                 }
                 else
                 {
-                    result="{Name} doesn't eat {eat}";
+                    result=$"{Name} doesn't eat {eat}";
                 }
             }
             if(Weight+foodWeight<MaxWeight)
             {
                 Weight=+foodWeight;
-                result="{result}.{Name} is {Weight} kg now";
+                result=$"{result}.{Name} is {Weight} kg now";
             }
             else if(Weight + foodWeight>=MaxWeight)
             {
                 Weight=MaxWeight;
-                result = "{result}.{Name} is {MaxWeight} kg now";
+                result = $"{result}.{Name} is {MaxWeight} kg now";
             }
             return result;
         }
 
         public string MakeSound()
         {
-            string result = "{Name}:{_sound}";
+            string result = $"{Name}:{_sound}";
             return result;
         }
 
