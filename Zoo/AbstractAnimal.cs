@@ -8,28 +8,26 @@ namespace Zoo
     {
         public string Name { get; set; }
         public string Habitat { get;  protected set; }
-        public double Weight { get; set; }
-        public double MaxWeight { get; set; }
+        public double MaxFoodForDay { get; set; }
         public double UnitsToSquare { get; set; }
         public double Age { get;set; }
         public bool isPredator { get; protected set; }
         protected string _sound;
 
-        List<string> foodTypePredatorList = new List<string>();
-        List<string> foodTypeHerbivoreList = new List<string>();
-        public AbstractAnimal(string name, string habitat, double unitsToSquare, double age, double weight, double maxWeight)
+        List<string> foodTypePredators;
+        List<string> foodTypeHerbivores = new List<string>();
+        public AbstractAnimal(string name, string habitat, double unitsToSquare, double age, double maxFoodForDay)
         {
             Name = name;
             Habitat = habitat;
             UnitsToSquare = unitsToSquare;
             Age = age;
-            Weight = weight;
-            MaxWeight = maxWeight;
-            foodTypePredatorList.Add("meat");
-            foodTypePredatorList.Add("fish");
-            foodTypeHerbivoreList.Add("leaves");
-            foodTypeHerbivoreList.Add("grass");
-            foodTypeHerbivoreList.Add("berries");
+            MaxFoodForDay = maxFoodForDay;
+            foodTypePredators = new List<string>()
+            {
+                "asdfg",
+                "bghgrtr"
+            };
         }
 
         public string Feed(string eat, double foodWeight)
@@ -56,16 +54,6 @@ namespace Zoo
                 {
                     result=$"{Name} doesn't eat {eat}";
                 }
-            }
-            if(Weight+foodWeight<MaxWeight)
-            {
-                Weight=+foodWeight;
-                result=$"{result}.{Name} is {Weight} kg now";
-            }
-            else if(Weight + foodWeight>=MaxWeight)
-            {
-                Weight=MaxWeight;
-                result = $"{result}.{Name} is {MaxWeight} kg now";
             }
             return result;
         }
