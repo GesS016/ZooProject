@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Zoo
 {
-    public class Tiger:AbstractAnimal
+    public class TigerAnimal:AbstractAnimal
     {
-        public Tiger(string name, string habitat, double unitsToSquare, double age, double weight, double maxWeight) : base(name, habitat, age, unitsToSquare, maxWeight, weight)
+        public TigerAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay) : base(name, biome, age, unitsToSquare, maxFoodForDay)
             {
             _sound = " RRR";
             }

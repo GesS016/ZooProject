@@ -7,53 +7,33 @@ namespace Zoo
     public abstract class AbstractAnimal
     {
         public string Name { get; set; }
-        public string Habitat { get;  protected set; }
+        public string Biome { get;  protected set; }
         public double MaxFoodForDay { get; set; }
         public double UnitsToSquare { get; set; }
         public double Age { get;set; }
         public bool isPredator { get; protected set; }
         protected string _sound;
 
-        List<string> foodTypePredators;
-        List<string> foodTypeHerbivores = new List<string>();
-        public AbstractAnimal(string name, string habitat, double unitsToSquare, double age, double maxFoodForDay)
+        List<string> foodType;
+        public AbstractAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay)
         {
             Name = name;
-            Habitat = habitat;
+            Biome = biome;
             UnitsToSquare = unitsToSquare;
             Age = age;
             MaxFoodForDay = maxFoodForDay;
-            foodTypePredators = new List<string>()
-            {
-                "asdfg",
-                "bghgrtr"
-            };
         }
 
         public string Feed(string eat, double foodWeight)
         {
             string result="";
-            if(isPredator==true)
+            if(foodType.Contains(eat) && foodWeight<=MaxFoodForDay)
             {
-                if(foodTypePredatorList.Contains(eat))
-                {
-                    result=$"{Name} has {foodWeight} kg of {eat}";
-                }
-                else
-                {
-                    result=$"{Name} doesn't eat {eat}";
-                }
+                result = $"{Name} ate {foodWeight} kg of {eat}";
             }
-            else if(isPredator==false)
+            else
             {
-                if(foodTypeHerbivoreList.Contains(eat))
-                {
-                    result=$"{Name} has {foodWeight} kg of {eat}";
-                }
-                else
-                {
-                    result=$"{Name} doesn't eat {eat}";
-                }
+                result = $"{Name} doesn't want to eat {eat}";
             }
             return result;
         }
