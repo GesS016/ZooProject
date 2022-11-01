@@ -24,21 +24,21 @@ namespace Zoo
             MaxFoodForDay = maxFoodForDay;
         }
 
-        public string Feed(string eat, double foodWeight)
+        public virtual string Feed(string eat, double foodWeight)
         {
             string result="";
-            if(foodType.Contains(eat) && foodWeight<=MaxFoodForDay)
+            if(foodWeight<=MaxFoodForDay)
             {
-                result = $"{Name} ate {foodWeight} kg of {eat}";
+                result = $"{Name} ate {foodWeight}kg of {eat}";
             }
             else
             {
-                result = $"{Name} doesn't want to eat {eat}";
+                result = $"{foodWeight}kg is too much for {Name}";
             }
             return result;
         }
 
-        public string MakeSound()
+        public virtual string MakeSound()
         {
             string result = $"{Name}:{_sound}";
             return result;
