@@ -9,16 +9,16 @@ namespace Zoo
 {
     public class TigerAnimal:AbstractAnimal
     {
-        List<string> tigerFoodType;
+        
         public TigerAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay) : base(name, biome, age, unitsToSquare, maxFoodForDay)
-            {
-            tigerFoodType = new List<string>()
+        {
+            FoodType = new List<string>()
             {
                 "meat",
                 "fish",
             };
             _sound = " RRR";
-            }
+        }
         
         public override string Play()
         {

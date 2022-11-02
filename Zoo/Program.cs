@@ -10,5 +10,5 @@ Console.WriteLine(tigerBarsik.Feed("meat",35));
 Aviary jungleAviary = new Aviary("JungleAviary", "jungle", 10.5);
 new List<AbstractAnimal>();
 {
-    tigerBarsik,
+    
 };

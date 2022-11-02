@@ -14,7 +14,8 @@ namespace Zoo
         public bool isPredator { get; protected set; }
         protected string _sound;
 
-        List<string> foodType;
+        public List<string> FoodType;
+
         public AbstractAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay)
         {
             Name = name;
