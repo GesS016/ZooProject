@@ -12,10 +12,10 @@ namespace Zoo
         
         public TigerAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay) : base(name, biome, age, unitsToSquare, maxFoodForDay)
         {
-            FoodType = new List<string>()
+            Food = new List<FoodType>()
             {
-                "meat",
-                "fish",
+                FoodType.fish,
+                FoodType.meat,
             };
             _sound = " RRR";
         }
@@ -24,17 +24,6 @@ namespace Zoo
         {
             string result = $"{Name} plays";
             return result;
-        }
-        public override string Feed(string eat, double foodWeight)
-        {
-            if (tigerFoodType.Contains(eat))
-            {
-                return base.Feed(eat, foodWeight);
-            }
-            else
-            {
-                return $"{Name} doesn't eat {eat}";
-            }
         }
     }
 }

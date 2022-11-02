@@ -8,16 +8,18 @@ namespace Zoo
     {
         public string Name { get; set; }
         public string Biome { get;  protected set; }
-        public double MaxFoodForDay { get; set; }
+        public double EatenFood { get; protected set; }
+        public double MaxFoodForDay { get; protected set; }
         public double UnitsToSquare { get; set; }
         public double Age { get;set; }
         public bool isPredator { get; protected set; }
         protected string _sound;
 
-        public List<string> FoodType;
+        public List<FoodType> Food;
 
         public AbstractAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay)
         {
+           EatenFood =0;
             Name = name;
             Biome = biome;
             UnitsToSquare = unitsToSquare;
@@ -25,12 +27,17 @@ namespace Zoo
             MaxFoodForDay = maxFoodForDay;
         }
 
-        public virtual string Feed(string eat, double foodWeight)
+        public string Feed(FoodType eat, double foodWeight)
         {
             string result="";
-            if(foodWeight<=MaxFoodForDay)
+            if(!Food.Contains(eat))
+            {
+                return $"{Name} doesn't eat {eat}";
+            }
+            if(EatenFood+foodWeight <= MaxFoodForDay)
             {
                 result = $"{Name} ate {foodWeight}kg of {eat}";
+                EatenFood += foodWeight;
             }
             else
             {
