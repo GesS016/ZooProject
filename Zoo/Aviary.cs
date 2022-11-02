@@ -17,6 +17,7 @@ namespace Zoo
             AviaryName=name;
             AviaryBiome=biome;
             AviarySquare=square;
+            List<AbstractAnimal> animals;
         }
     }
 }
