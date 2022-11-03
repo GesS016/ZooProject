@@ -10,12 +10,17 @@ namespace Zoo
     public class TigerAnimal:AbstractAnimal
     {
         
-        public TigerAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay) : base(name, biome, age, unitsToSquare, maxFoodForDay)
+        public TigerAnimal(string name,double age) : base(name, age)
         {
+            Species = "Tiger";
+            Biome = "jungle";
+            SquareToUnit = 20;
+            MaxFoodForDay = 30;
+            IsPredator = true;
             Food = new List<FoodType>()
             {
-                FoodType.fish,
-                FoodType.meat,
+                FoodType.Fish,
+                FoodType.Meat,
             };
             _sound = " RRR";
         }

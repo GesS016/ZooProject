@@ -8,23 +8,21 @@ namespace Zoo
     {
         public string Name { get; set; }
         public string Biome { get;  protected set; }
+        public string Species { get;  protected set; }
         public double EatenFood { get; protected set; }
         public double MaxFoodForDay { get; protected set; }
-        public double UnitsToSquare { get; set; }
+        public double SquareToUnit { get; set; }
         public double Age { get;set; }
-        public bool isPredator { get; protected set; }
+        public bool IsPredator { get; protected set; }
+        public List<FoodType> Food;
         protected string _sound;
 
-        public List<FoodType> Food;
-
-        public AbstractAnimal(string name, string biome, double unitsToSquare, double age, double maxFoodForDay)
+        public AbstractAnimal(string name, double age)
         {
            EatenFood =0;
             Name = name;
-            Biome = biome;
-            UnitsToSquare = unitsToSquare;
             Age = age;
-            MaxFoodForDay = maxFoodForDay;
+            IsPredator = false;
         }
 
         public string Feed(FoodType eat, double foodWeight)

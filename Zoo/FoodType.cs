@@ -8,9 +8,9 @@ namespace Zoo
 {
     public enum FoodType
     {
-        meat,
-        fish,
-        bamboo,
-        hay
+        Meat,
+        Fish,
+        Bamboo,
+        Hay
     }
 }
