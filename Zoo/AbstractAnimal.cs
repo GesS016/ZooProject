@@ -50,6 +50,10 @@ namespace Zoo
             return result;
         }
 
-        public abstract string Play();
+        public virtual string Play()
+        {
+            string result = $"{Name} plays";
+            return result;
+        }
     }
 }

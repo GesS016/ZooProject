@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Zoo
 {
-    public class TigerAnimal:AbstractAnimal
+    public class LionAnimal:AbstractAnimal
     {
-        
-        public TigerAnimal(string name,double age) : base(name, age)
+        public LionAnimal(string name, double age):base(name,age)
         {
-            Species = "Tiger";
-            Biome = "jungle";
+            Species = "Lion";
+            Biome = "savannah";
             SquareToUnit = 20;
             MaxFoodForDay = 30;
             IsPredator = true;
@@ -22,7 +20,7 @@ namespace Zoo
                 FoodType.Fish,
                 FoodType.Meat,
             };
-            _sound = " RRR";
+            _sound = " RROAR";
         }
     }
 }

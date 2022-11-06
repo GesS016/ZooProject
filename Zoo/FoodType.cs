@@ -11,6 +11,7 @@ namespace Zoo
         Meat,
         Fish,
         Bamboo,
-        Hay
+        Hay,
+        Leaves
     }
 }

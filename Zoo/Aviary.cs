@@ -38,7 +38,7 @@ namespace Zoo
             {
                 return new Message()
                 {
-                    Text = $"not enough space for {animal.Name} in {Name}"
+                    Text = $"not enough space for {animal.Name} in {Name}",
                     SenderType = "Aviary",
                     SenderName = Name,
                     MessageType = MessageType.AddAnimalFailure
