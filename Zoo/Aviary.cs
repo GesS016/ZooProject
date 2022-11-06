@@ -18,75 +18,67 @@ namespace Zoo
             Name=name;
             Biome=biome;
             Square=square;
+            Animals = new List<AbstractAnimal>();
         }
 
-        public string AddAnimal(AbstractAnimal animal)
+       public Message AddAnimal(AbstractAnimal animal)
         {
-            string result = "";
-            if(Biome==animal.Biome)
+            if(Biome!=animal.Biome)
             {
-                if(animal.IsPredator)
+                return new Message()
                 {
-                    if (Animals != null)
-                    {
-                      foreach(AbstractAnimal aviaryAnimal in Animals )
-                      {
-                        if(aviaryAnimal.Species==animal.Species)
-                        {
-                           if(animal.SquareToUnit <= FreeSquare())
-                            {
-                              Animals.Add(animal);
-                              result= $"{animal.Name} lives in {Name} now";
-                            }
-                           else
-                            {
-                              result = $"not enough space for {animal.Name} in {Name} ";
-                            }
-                        }
-                        else
-                        {
-                            result = $"{animal.Species}s don't live in {Name} ";
-                        }
-                      }
-                    }
-                    else
-                    {
-                        Animals.Add(animal);
-                        result = $"{animal.Name} lives in {Name} now";
-                    }
-                }
-                else // if animal is herbivore
+                    Text = $"{animal.Name} doesn't live in {Biome}",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AddAnimalFailure
+                };
+            }
+
+            else if (FreeSquare() < animal.SquareToUnit)
+            {
+                return new Message()
                 {
-                    if(Animals!=null)
-                    {
-                      foreach(AbstractAnimal aviaryAnimal in Animals)
-                      {
-                        if(!aviaryAnimal.IsPredator)
-                        {
-                            if(animal.SquareToUnit<=FreeSquare())
-                            {
-                                Animals.Add(animal);
-                                result= $"{animal.Name} lives in {Name} now";
-                            }
-                            else
-                            {
-                               result = $"not enough space for {animal.Name} in {Name} ";
-                            }
-                        }
-                        else
-                        {
-                            result = $"{Name} is for predators";
-                        }
-                      }
-                    }
-                    else
-                    {
-                        Animals.Add(animal);
-                        result = $"{animal.Name} lives in {Name} now";
-                    }
+                    Text = $"not enough space for {animal.Name} in {Name}"
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AddAnimalFailure
+                };
+            }
+
+            else if(!IsAnimalMatch(animal))
+            {
+                return new Message()
+                {
+                    Text = $"{animal.Name} doesn't live with animals in aviary",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AddAnimalFailure
+                };
+            }
+
+            else
+            {
+                Animals.Add(animal);
+                return new Message()
+                {
+                    Text = $"{animal.Name} lives in {Name} now",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AddAnimalSuccess
+                };
+            }
+        }
+
+        private bool IsAnimalMatch (AbstractAnimal animal)
+        {
+            foreach(AbstractAnimal a in Animals)
+            {
+                if((a.IsPredator || animal.IsPredator) && animal.Species!=a.Species)
+                {
+                    return false;
                 }
             }
-            return result;
+            return true;
         }
 
         private double FreeSquare()
