@@ -97,10 +97,50 @@ namespace Zoo
         {
             int animalQuantity=Animals.Count;
             double foodForEach=feederFoodWeight/animalQuantity;
+            if(feederFoodWeight>0)
+            {
             foreach(AbstractAnimal animal in Animals)
             {
                 animal.Feed(feederEat, foodForEach);
                 feederFoodWeight -= foodForEach;
+                
+                return new Message()
+                {
+                    Text=$"{animal.Name} ate {foodForEach}kg of {feederEat}",
+                    SenderType="Aviary",
+                    SenderName=Name,
+                    MessageType= MessageType.AnimalFeed
+                };
+            }  
+            }
+            else
+            {
+                throw new ArgumentException("Weight of food cant be zero or less");
+            }
+        }
+
+        public Message RemoveAnimal(AbstractAnimal animal)
+        {
+            if(Animals.Contains(animal))
+            {
+                Animals.Remove(animal);
+                return new Message()
+                {
+                    Text = $"{animal.Name} removed from {Name}",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AnimalRemove
+                };
+            }
+            else
+            {
+                return new Message()
+                {
+                    Text = $"{animal.Name} don't live in {Name}",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AnimalRemoveException
+                };
             }
         }
     }

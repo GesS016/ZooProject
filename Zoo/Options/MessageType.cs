@@ -10,5 +10,8 @@ namespace Zoo.Options
     {
         AddAnimalFailure,
         AddAnimalSuccess,
+        AnimalFeed,
+        AnimalRemove,
+        AnimalRemoveException
     }
 }
