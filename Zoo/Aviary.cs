@@ -97,8 +97,20 @@ namespace Zoo
         {
             int animalQuantity=Animals.Count;
             double foodForEach=feederFoodWeight/animalQuantity;
-            if(feederFoodWeight>0)
+            if(feederFoodWeight<=0)
             {
+                throw new ArgumentException("weight of food cant be zero or less");
+            }
+            if(Animals.Count<=0)
+            {
+                return new Message()
+                {
+                    Text=$"there are no animals in aviary",
+                    SenderType="Aviary",
+                    SenderName=Name,
+                    MessageType = MessageType.EmptyAviary
+                };
+            }
             foreach(AbstractAnimal animal in Animals)
             {
                 animal.Feed(feederEat, foodForEach);
@@ -111,12 +123,7 @@ namespace Zoo
                     SenderName=Name,
                     MessageType= MessageType.AnimalFeed
                 };
-            }  
-            }
-            else
-            {
-                throw new ArgumentException("Weight of food cant be zero or less");
-            }
+            } 
         }
 
         public Message RemoveAnimal(AbstractAnimal animal)

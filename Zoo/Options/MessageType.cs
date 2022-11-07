@@ -12,6 +12,7 @@ namespace Zoo.Options
         AddAnimalSuccess,
         AnimalFeed,
         AnimalRemove,
-        AnimalRemoveException
+        AnimalRemoveException,
+        EmptyAviary
     }
 }
