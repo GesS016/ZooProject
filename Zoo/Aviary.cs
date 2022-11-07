@@ -92,5 +92,16 @@ namespace Zoo
             }
             return freeSquare;
         }
+
+        public Message FeedAnimals (FoodType feederEat, double feederFoodWeight)
+        {
+            int animalQuantity=Animals.Count;
+            double foodForEach=feederFoodWeight/animalQuantity;
+            foreach(AbstractAnimal animal in Animals)
+            {
+                animal.Feed(feederEat, foodForEach);
+                feederFoodWeight -= foodForEach;
+            }
+        }
     }
 }
