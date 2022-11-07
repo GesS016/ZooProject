@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zoo.Options;
 
-namespace Zoo
+namespace Zoo.Animals
 {
-    public class LionAnimal:AbstractAnimal
+    public class LionAnimal : AbstractAnimal
     {
-        public LionAnimal(string name, double age):base(name,age)
+        public LionAnimal(string name, double age) : base(name, age)
         {
             Species = "Lion";
-            Biome = "savannah";
+            Biome = BiomType.Savannah;
             SquareToUnit = 20;
             MaxFoodForDay = 30;
             IsPredator = true;

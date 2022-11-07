@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zoo.Animals;
+using Zoo.Options;
 
 namespace Zoo
 {
     public class Aviary //Вольер
     {
         public string Name { get; protected set; }
-        public string Biome { get; protected set; }
+        public BiomType Biome { get; protected set; }
         public double Square { get; protected set; }
         public List<AbstractAnimal> Animals { get; protected set; }
 
-        public Aviary(string name, string biome, double square)
+        public Aviary(string name, BiomType biome, double square)
         {
             Name=name;
             Biome=biome;

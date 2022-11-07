@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
+using Zoo.Options;
 
-
-namespace Zoo
+namespace Zoo.Animals
 {
     public abstract class AbstractAnimal
     {
         public string Name { get; set; }
-        public string Biome { get;  protected set; }
-        public string Species { get;  protected set; }
+        public BiomType Biome { get; protected set; }
+        public string Species { get; protected set; }
         public double EatenFood { get; protected set; }
         public double MaxFoodForDay { get; protected set; }
         public double SquareToUnit { get; set; }
-        public double Age { get;set; }
+        public double Age { get; set; }
         public bool IsPredator { get; protected set; }
         public List<FoodType> Food;
         protected string _sound;
 
         public AbstractAnimal(string name, double age)
         {
-           EatenFood =0;
+            EatenFood = 0;
             Name = name;
             Age = age;
             IsPredator = false;
@@ -27,12 +27,12 @@ namespace Zoo
 
         public string Feed(FoodType eat, double foodWeight)
         {
-            string result="";
-            if(!Food.Contains(eat))
+            string result = "";
+            if (!Food.Contains(eat))
             {
                 return $"{Name} doesn't eat {eat}";
             }
-            if(EatenFood+foodWeight <= MaxFoodForDay)
+            if (EatenFood + foodWeight <= MaxFoodForDay)
             {
                 result = $"{Name} ate {foodWeight}kg of {eat}";
                 EatenFood += foodWeight;

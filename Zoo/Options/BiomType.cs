@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Zoo
+namespace Zoo.Options
 {
-    public enum FoodType
+    public enum BiomType
     {
-        Meat,
-        Fish,
-        Bamboo,
-        Hay,
-        Leaves
+        Savannah,
+        Jungle,
+        Prairie //прерия
     }
 }

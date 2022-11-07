@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Zoo
+namespace Zoo.Options
 {
-     public class Message
+    public class Message
     {
         public string Text { get; set; }
         public string SenderType { get; set; }
