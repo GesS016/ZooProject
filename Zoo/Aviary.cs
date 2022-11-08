@@ -101,7 +101,7 @@ namespace Zoo
             {
                 throw new ArgumentException("weight of food cant be zero or less");
             }
-            if(Animals.Count<=0)
+            if(animalQuantity == 0)
             {
                 return new Message()
                 {
@@ -111,19 +111,21 @@ namespace Zoo
                     MessageType = MessageType.EmptyAviary
                 };
             }
-            foreach(AbstractAnimal animal in Animals)
+            else
             {
-                animal.Feed(feederEat, foodForEach);
-                feederFoodWeight -= foodForEach;
-                
+                foreach (AbstractAnimal animal in Animals)
+                {
+                    animal.Feed(feederEat, foodForEach);
+                    feederFoodWeight -= foodForEach;
+                }
                 return new Message()
                 {
-                    Text=$"{animal.Name} ate {foodForEach}kg of {feederEat}",
-                    SenderType="Aviary",
-                    SenderName=Name,
-                    MessageType= MessageType.AnimalFeed
+                    Text = $"{foodForEach}kg of {feederEat} is eaten",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AnimalFeed
                 };
-            } 
+            }
         }
 
         public Message RemoveAnimal(AbstractAnimal animal)
@@ -149,6 +151,15 @@ namespace Zoo
                     MessageType = MessageType.AnimalRemoveException
                 };
             }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Aviary aviary &&
+                   Name == aviary.Name &&
+                   Biome == aviary.Biome &&
+                   Square == aviary.Square &&
+                   Animals.Count == aviary.Animals.Count;
         }
     }
 }

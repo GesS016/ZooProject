@@ -13,6 +13,7 @@ namespace Zoo.Animals
         public double MaxFoodForDay { get; protected set; }
         public double SquareToUnit { get; set; }
         public double Age { get; set; }
+        public double NotEatenFood = 0;
         public bool IsPredator { get; protected set; }
         public List<FoodType> Food;
         protected string _sound;
@@ -39,7 +40,9 @@ namespace Zoo.Animals
             }
             else
             {
+                NotEatenFood=(EatenFood+foodWeight)-MaxFoodForDay;
                 result = $"{foodWeight}kg is too much for {Name}";
+                EatenFood = MaxFoodForDay;
             }
             return result;
         }
