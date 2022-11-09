@@ -26,6 +26,19 @@ namespace Zoo.Test
                 MessageType = MessageType.AddAnimalSuccess
             };
             yield return new object[] { animal, aviary, expectedAviary, expectedMessage };
+
+            animal = new TigerAnimal("Barsik", 2); //красная лампочка :(
+            aviary = new Aviary("Volyer", BiomType.Savannah, 50);
+            expectedAviary = new Aviary("Volyer", BiomType.Savannah, 50);
+            expectedAviary.Animals.Add(animal);
+            expectedMessage = new Message()
+            {
+                Text = $"{animal.Name} doesn't live in {BiomType.Savannah}",
+                SenderType = "Aviary",
+                SenderName = aviary.Name,
+                MessageType = MessageType.AddAnimalFailure
+            };
+            yield return new object[] { animal, aviary, expectedAviary, expectedMessage };
         }
     }
 
@@ -68,11 +81,11 @@ namespace Zoo.Test
             };
             yield return new object[] { horse, aviary, expectedAviary, expectedMessage };
 
-             horse = new HorseAnimal("Yuliy", 5);
-             aviary = new Aviary("Volyer", BiomType.Prairie, 50);
+            horse = new HorseAnimal("Yuliy", 5);
+            aviary = new Aviary("Volyer", BiomType.Prairie, 50);
             aviary.AddAnimal(horse);
-             expectedAviary = new Aviary("Volyer", BiomType.Prairie, 50);
-             expectedMessage = new Message()
+            expectedAviary = new Aviary("Volyer", BiomType.Prairie, 50);
+            expectedMessage = new Message()
             {
                 Text = $"{horse.Name} removed from {aviary.Name}",
                 SenderType = "Aviary",
