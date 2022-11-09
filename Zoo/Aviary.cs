@@ -153,6 +153,34 @@ namespace Zoo
             }
         }
 
+        public Message MakeSound()
+        {
+            if (Animals.Count!=0)
+            {
+                foreach(AbstractAnimal animal in Animals)
+                {
+                    animal.MakeSound();
+                }
+                return new Message()
+                {
+                    Text = "All animals made sound",
+                    SenderType = "Aviary",
+                    SenderName = Name,
+                    MessageType = MessageType.AnimalMakeSound
+                };
+            }
+            else
+            {
+                return new Message()
+                {
+                    Text="Aviary is empty",
+                    SenderType="Aviary",
+                    SenderName= Name,
+                    MessageType=MessageType.EmptyAviary
+                };
+            }
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Aviary aviary &&
