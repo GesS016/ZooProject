@@ -49,4 +49,37 @@ namespace Zoo.Test
             
         }
     }
+
+    public class RemoveAnimalTestCaseSource : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            AbstractAnimal lion = new LionAnimal("Mufasa", 5);
+            AbstractAnimal horse = new HorseAnimal("Yuliy", 5);
+            Aviary aviary=new Aviary("Volyer",BiomType.Savannah,50);
+            aviary.AddAnimal(lion);
+            Aviary expectedAviary = new Aviary("Volyer", BiomType.Savannah, 50);
+            Message expectedMessage = new Message()
+            {
+                Text = $"{horse.Name} don't live in {aviary.Name}",
+                SenderType = "Aviary",
+                SenderName = aviary.Name,
+                MessageType = MessageType.AnimalRemoveException
+            };
+            yield return new object[] { horse, aviary, expectedAviary, expectedMessage };
+
+             horse = new HorseAnimal("Yuliy", 5);
+             aviary = new Aviary("Volyer", BiomType.Prairie, 50);
+            aviary.AddAnimal(horse);
+             expectedAviary = new Aviary("Volyer", BiomType.Prairie, 50);
+             expectedMessage = new Message()
+            {
+                Text = $"{horse.Name} removed from {aviary.Name}",
+                SenderType = "Aviary",
+                SenderName = aviary.Name,
+                MessageType = MessageType.AnimalRemove
+            };
+            yield return new object[] { horse, aviary, expectedAviary, expectedMessage };
+        }
+    }
 }

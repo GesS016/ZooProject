@@ -21,6 +21,13 @@ namespace Zoo.Test
             Message actualMessage = aviary.MakeSoundAll();
             Assert.AreEqual(expectedMessage, actualMessage);
         }
+
+        [TestCaseSource(typeof(RemoveAnimalTestCaseSource))]
+        public void RemoveAnimalTest(AbstractAnimal animal,Aviary aviary,Aviary expectedAviary, Message expectedMessage)
+        {
+            Message actualMessage = aviary.RemoveAnimal(animal);
+            Aviary actualAviary = aviary;
+        }
     }
 
 }
