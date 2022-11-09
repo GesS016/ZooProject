@@ -14,5 +14,13 @@ namespace Zoo.Test
             Assert.AreEqual(expectedAviary, actualAviary);
             Assert.AreEqual(expectedMessage, actualMessage);
         }
+
+        [TestCaseSource(typeof(MakeSoundAllTestCaseSource))]
+        public void MakeSoundAllTest(Aviary aviary,Message expectedMessage)
+        {
+            Message actualMessage = aviary.MakeSoundAll();
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
     }
+
 }

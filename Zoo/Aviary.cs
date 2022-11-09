@@ -153,7 +153,7 @@ namespace Zoo
             }
         }
 
-        public Message MakeSound()
+        public Message MakeSoundAll()
         {
             if (Animals.Count!=0)
             {

@@ -28,4 +28,25 @@ namespace Zoo.Test
             yield return new object[] { animal, aviary, expectedAviary, expectedMessage };
         }
     }
+
+    public class MakeSoundAllTestCaseSource : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            AbstractAnimal lion = new LionAnimal("Mufasa", 5);
+            AbstractAnimal giraffe = new GiraffeAnimal("Barsik", 5);
+            Aviary aviary=new Aviary("Volyer",BiomType.Savannah, 50);
+            aviary.AddAnimal(giraffe);
+            aviary.AddAnimal(lion);
+            Message expectedMessage = new Message()
+            {
+                Text = "All animals made sound",
+                SenderType = "Aviary",
+                SenderName = aviary.Name,
+                MessageType = MessageType.AnimalMakeSound
+            };
+            yield return new object[]{ aviary, expectedMessage };
+            
+        }
+    }
 }

@@ -13,6 +13,7 @@ namespace Zoo.Options
         AnimalFeed,
         AnimalRemove,
         AnimalRemoveException,
-        EmptyAviary
+        EmptyAviary,
+        AnimalMakeSound
     }
 }
